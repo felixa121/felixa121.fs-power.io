@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FS Power Consultants provides substation commissioning, protection and controls testing, SCADA/RTAC validation, and power engineering documentation." />
+  <title>FS Power Consultants | Substation Commissioning & Protection Engineering</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --navy: #071b31;
+      --navy-2: #0d2e50;
+      --blue: #1d6fb8;
+      --gold: #d6a21f;
+      --gold-2: #efbf3a;
+      --steel: #6f777d;
+      --gray: #f5f7fa;
+      --text: #172033;
+      --muted: #64748b;
+      --white: #ffffff;
+      --border: #dce5ee;
+      --shadow: 0 18px 50px rgba(7, 27, 49, 0.14);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.93);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 22px;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: -0.03em;
+    }
+    .brand img { width: 48px; height: 48px; object-fit: contain; }
+    .brand span { display: block; font-size: 0.8rem; color: var(--muted); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a {
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 750;
+      font-size: 0.92rem;
+      opacity: 0.9;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta {
+      background: var(--navy);
+      color: white !important;
+      padding: 10px 16px;
+      border-radius: 999px;
+      box-shadow: 0 8px 22px rgba(7, 27, 49, .18);
+    }
+    .hero {
+      min-height: 720px;
+      display: flex;
+      align-items: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 70% 25%, rgba(214, 162, 31, 0.28), transparent 28%),
+        linear-gradient(90deg, rgba(4, 16, 30, .94), rgba(7, 27, 49, .77) 48%, rgba(7, 27, 49, .55)),
+        url('assets/hero-transmission.png');
+      background-size: cover;
+      background-position: center;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(7,27,49,.55) 100%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1180px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 110px 22px 90px;
+      display: grid;
+      grid-template-columns: 1.05fr .65fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 13px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 999px;
+      color: #dbeafe;
+      font-weight: 800;
+      letter-spacing: .06em;
+      font-size: .78rem;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .eyebrow b { width: 9px; height: 9px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 18px var(--gold); }
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 5.25rem);
+      line-height: .97;
+      letter-spacing: -0.07em;
+      font-weight: 950;
+      max-width: 850px;
+      margin-bottom: 26px;
+    }
+    .hero p {
+      font-size: clamp(1.08rem, 2vw, 1.35rem);
+      color: #e8f2ff;
+      max-width: 735px;
+      margin-bottom: 34px;
+      font-weight: 430;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 900;
+      border: 2px solid transparent;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--gold); color: var(--navy); box-shadow: 0 16px 36px rgba(214,162,31,.28); }
+    .btn-primary:hover { background: var(--gold-2); }
+    .btn-secondary { color: white; border-color: rgba(255,255,255,.75); background: rgba(255,255,255,.06); }
+    .btn-secondary:hover { background: white; color: var(--navy); }
+    .hero-card {
+      justify-self: end;
+      max-width: 360px;
+      width: 100%;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 28px;
+      padding: 26px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 28px 80px rgba(0,0,0,.24);
+    }
+    .profile-wrap { display: flex; align-items: center; gap: 16px; margin-bottom: 22px; }
+    .profile-wrap img { width: 78px; height: 78px; object-fit: cover; border-radius: 50%; border: 3px solid var(--gold); }
+    .profile-wrap h3 { font-size: 1.15rem; }
+    .profile-wrap p { margin: 3px 0 0; font-size: .88rem; color: #dbeafe; }
+    .proof-list { display: grid; gap: 12px; }
+    .proof-list div { background: rgba(7,27,49,.45); border: 1px solid rgba(255,255,255,.14); border-radius: 16px; padding: 14px; }
+    .proof-list strong { color: var(--gold-2); display: block; margin-bottom: 2px; }
+    .proof-list span { color: #dbeafe; font-size: .92rem; }
+    section { padding: 82px 22px; }
+    .section-inner { max-width: 1180px; margin: 0 auto; }
+    .section-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 34px; }
+    h2 { color: var(--navy); font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.05; letter-spacing: -0.05em; font-weight: 950; }
+    .section-intro { color: var(--muted); max-width: 680px; font-size: 1.07rem; }
+    .dark { background: linear-gradient(135deg, var(--navy-2), var(--navy)); color: white; }
+    .dark h2, .dark h3 { color: white; }
+    .dark .section-intro { color: #dbeafe; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: 0 10px 32px rgba(7,27,49,.06);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: rgba(29,111,184,.35); }
+    .card h3 { color: var(--navy); margin-bottom: 10px; font-size: 1.16rem; }
+    .card p, .card li { color: var(--muted); }
+    .card ul { padding-left: 19px; margin-top: 10px; }
+    .card li { margin: 8px 0; }
+    .service-card { border-top: 5px solid var(--gold); }
+    .dark .card { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.14); box-shadow: none; }
+    .dark .card h3 { color: var(--gold-2); }
+    .dark .card p, .dark .card li { color: #dbeafe; }
+    .split { display: grid; grid-template-columns: .9fr 1.1fr; gap: 30px; align-items: start; }
+    .logo-panel {
+      background: white;
+      border-radius: 26px;
+      padding: 32px;
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 22px 60px rgba(0,0,0,.22);
+    }
+    .logo-panel img { width: 100%; display: block; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .pill { padding: 9px 12px; border-radius: 999px; background: rgba(214,162,31,.12); color: var(--gold-2); border: 1px solid rgba(214,162,31,.28); font-weight: 850; font-size: .85rem; }
+    .timeline { display: grid; gap: 16px; }
+    .job { border-left: 5px solid var(--gold); }
+    .job-meta { color: var(--blue); font-weight: 850; margin-bottom: 8px; }
+    .contact-band {
+      background: var(--gray);
+      border-top: 1px solid var(--border);
+    }
+    .contact-box {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 26px;
+      box-shadow: var(--shadow);
+    }
+    .contact-links { display: grid; gap: 12px; }
+    .contact-links a { color: var(--blue); font-weight: 850; text-decoration: none; }
+    footer { background: #04111f; color: #dbeafe; padding: 30px 22px; text-align: center; font-size: .92rem; }
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hero-inner, .split, .contact-box { grid-template-columns: 1fr; }
+      .hero { min-height: auto; }
+      .hero-card { justify-self: stretch; max-width: none; }
+      .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .section-intro { margin-top: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="#top" class="brand">
+        <img src="assets/fs-power-logo.png" alt="FS Power Consultants logo" />
+        <div>FS Power <span>Consultants</span></div>
+      </a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact" class="nav-cta">Request Support</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow"><b></b> Power Systems Engineering Support</div>
+          <h1>Substation Commissioning & Protection Engineering</h1>
+          <p>FS Power Consultants supports utilities, contractors, and engineering teams with protection and control testing, SCADA/RTAC validation, energization readiness, and field-ready technical documentation.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Request Support</a>
+            <a class="btn btn-secondary" href="#capabilities">View Capabilities</a>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Felix Abel profile summary">
+          <div class="profile-wrap">
+            <img src="assets/felix-profile.png" alt="Felix Abel" />
+            <div>
+              <h3>Felix Abel</h3>
+              <p>Power Systems Engineer & Consultant</p>
+            </div>
+          </div>
+          <div class="proof-list">
+            <div><strong>Field-first support</strong><span>SAT procedures, relay checks, redlines, punch lists, and energization readiness.</span></div>
+            <div><strong>Utility experience</strong><span>Protection, SCADA, commissioning, and owner’s representative support.</span></div>
+            <div><strong>Fast documentation</strong><span>Client-ready test sheets, reports, and issue tracking for active projects.</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Services built for power projects.</h2>
+          <p class="section-intro">Practical engineering support for commissioning, protection and controls, SCADA validation, and technical documentation when project schedules are tight.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card service-card"><h3>Substation Commissioning Support</h3><p>SAT procedure development, test plan review, owner’s representative support, issue tracking, redline review, and commissioning closeout.</p></article>
+          <article class="card service-card"><h3>Protection & Control Testing</h3><p>Relay testing support, trip circuit checks, breaker control verification, CT/PT validation, lockout checks, and scheme-level review.</p></article>
+          <article class="card service-card"><h3>SCADA / RTAC Validation</h3><p>RTAC point verification, SCADA tag checks, analog scaling review, DNP/SEL protocol support, HMI validation, and communication troubleshooting.</p></article>
+          <article class="card service-card"><h3>Technical Documentation</h3><p>SAT packages, I/O lists, device-by-device test sheets, commissioning reports, punch lists, client-ready procedures, and redline support.</p></article>
+          <article class="card service-card"><h3>Design Review Support</h3><p>Review drawings, I/O lists, schematics, vendor prints, wiring diagrams, and constructability details before they become field problems.</p></article>
+          <article class="card service-card"><h3>Owner’s Rep Support</h3><p>Third-party technical review, field observations, contractor coordination, daily reports, and clear recommendations to project leadership.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark" id="capabilities">
+      <div class="section-inner split">
+        <div>
+          <h2>FS Power Consultants</h2>
+          <p class="section-intro">Focused on practical power systems execution: field testing, commissioning readiness, documentation, and clear technical communication.</p>
+          <div class="logo-panel"><img src="assets/fs-power-logo.png" alt="FS Power Consultants logo" /></div>
+        </div>
+        <div>
+          <div class="grid-2">
+            <article class="card"><h3>Relay & Panel Testing</h3><p>Support for SEL, GE, breaker controls, alarms, trips, lockouts, and point-to-point validation.</p></article>
+            <article class="card"><h3>SAT Procedure Development</h3><p>Field-ready procedures with prerequisites, test steps, acceptance criteria, and signoff sections.</p></article>
+            <article class="card"><h3>SCADA Verification</h3><p>Point checks, status validation, analog scaling, control verification, RTAC and HMI checks.</p></article>
+            <article class="card"><h3>Field Issue Resolution</h3><p>Punch list development, discrepancy tracking, redline packages, and commissioning coordination.</p></article>
+          </div>
+          <div class="pill-row">
+            <span class="pill">SEL Relays</span><span class="pill">RTAC</span><span class="pill">DNP3</span><span class="pill">SCADA</span><span class="pill">SAT</span><span class="pill">CT/PT Checks</span><span class="pill">Breaker Controls</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Power systems experience.</h2>
+          <p class="section-intro">A blended background across utility protection, SCADA, commissioning, controls, and systems engineering.</p>
+        </div>
+        <div class="timeline">
+          <article class="card job">
+            <h3>Fervo Energy via Mangan Inc — P&C Commissioning Consultant</h3>
+            <div class="job-meta">Feb 2026 – Present</div>
+            <ul><li>Independent P&C commissioning oversight for utility-scale geothermal interconnect projects.</li><li>Verified energization readiness through relay settings, RTAC configuration, SCADA communication, and testing review.</li><li>Tracked major commissioning issues, schedule risks, and technical recommendations for project leadership.</li></ul>
+          </article>
+          <article class="card job">
+            <h3>Los Angeles Department of Water and Power — Electrical Engineering Associate</h3>
+            <div class="job-meta">Jul 2023 – Feb 2026</div>
+            <ul><li>Performed field testing and maintenance of protection relays across transmission and distribution substations.</li><li>Executed CT/PT verification, impedance testing, breaker failure checks, and relay functional testing.</li><li>Supported SCADA integration by verifying communications and control signals from field equipment to the control center.</li></ul>
+          </article>
+          <article class="card job">
+            <h3>Burbank Water & Power — Electrical Engineer</h3>
+            <div class="job-meta">Mar 2022 – Sep 2022</div>
+            <ul><li>Implemented RTU servers and tested SCADA tag points in OSI OpenView.</li><li>Migrated ADMS control logic and supported OSIsoft PI System data extraction for net metering and revenue reports.</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-band" id="contact">
+      <div class="section-inner contact-box">
+        <div>
+          <h2>Need commissioning or documentation support?</h2>
+          <p class="section-intro">Reach out for substation commissioning support, relay testing assistance, SCADA/RTAC troubleshooting, SAT packages, or technical documentation.</p>
+          <div class="hero-actions" style="margin-top: 22px;">
+            <a class="btn btn-primary" href="mailto:fspowerconsultants@gmail.com">Email FS Power</a>
+            <a class="btn btn-secondary" style="color: var(--navy); border-color: var(--navy);" href="assets/Felix_Abel_Resume_2026.docx">Download Resume</a>
+          </div>
+        </div>
+        <div class="contact-links">
+          <a href="tel:310-237-2108">📞 310-237-2108</a>
+          <a href="mailto:fspowerconsultants@gmail.com">⚡ fspowerconsultants@gmail.com</a>
+          <a href="mailto:felix59@live.com">📧 felix59@live.com</a>
+          <a href="mailto:felix@felixrecruiting.com">💼 felix@felixrecruiting.com</a>
+          <a href="https://www.linkedin.com/in/felixabel" target="_blank" rel="noopener">LinkedIn: /in/felixabel</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>FS Power Consultants</strong> — Substation Commissioning, Protection & Control, SCADA/RTAC Support, and Technical Documentation.</p>
+    <p>&copy; 2026 Felix Abel. All rights reserved.</p>
+  </footer>
+</body>
+</html>
